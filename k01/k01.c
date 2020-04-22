@@ -7,7 +7,7 @@ extern double ave_online(double val,double ave,int N);
 extern double var_online(double val,double ave,double var,double n,double x);
 
 int main(void)
-{   double ave,var,x;
+{   double ave=0,var=0,x=0, suiteivar=0;
     int N=0;
     double val;
     char fname[FILENAME_MAX];
@@ -31,8 +31,16 @@ int main(void)
      ave=ave_online(val,ave,N);
      x=ave_online(pow(val,2),x,n);
     }
+    if(n==1){
+        suiteivar=0;
+    }
+    else{
+        suiteivar=n/(n-1)*var;
+    }
+    printf("hyouhonn ave: %lf\n", ave);
+    printf("hyouhonn var: %lf\n", var);
     printf("suitei ave: %lf\n", ave);
-    printf("suitei var: %lf\n", var);
+    printf("suitei var: %lf\n", suiteivar);
     if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
         exit(EXIT_FAILURE);
@@ -45,12 +53,7 @@ extern double ave_online(double val,double ave, int N){
 };
 
 extern double var_online(double val,double ave,double var,double n,double x){
-if(n==1){
-var=0;
-}
-else{
-    var=n/(n-1)*(((n-1)*x)/n+pow(val,2)/n-pow(((n-1)*ave)/n+val/n,2));
-}
+    var=(((n-1)*x)/n+pow(val,2)/n-pow(((n-1)*ave)/n+val/n,2));
 return(var);
 };
 
