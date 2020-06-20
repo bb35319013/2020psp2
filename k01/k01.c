@@ -7,7 +7,7 @@ extern double ave_online(double val,double ave,int N);
 extern double var_online(double val,double ave,double var,double n,double x);
 
 int main(void)
-{   double ave=0,var=0,x=0, suiteivar=0;
+{   double ave=0,var=0,square_ave=0, suiteivar=0;
     int N=0;
     double val;
     char fname[FILENAME_MAX];
@@ -26,12 +26,12 @@ int main(void)
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
          N++;
-         n++;      
-     var=var_online(val,ave,var,n,x);
-     ave=ave_online(val,ave,N);
-     x=ave_online(pow(val,2),x,n);
+         n++;     
+        var=var_online(val,ave,var,N,square_ave);
+        ave=ave_online(val,ave,N);
+        square_ave=ave_online(pow(val,2),square_ave,n);
     }
-    if(n==1){
+    if(N==1){
         suiteivar=0;
     }
     else{
@@ -47,13 +47,13 @@ int main(void)
     }
     return 0;
 }
-extern double ave_online(double val,double ave, int N){
+double ave_online(double val,double ave, int N){
     ave=(ave*(N-1)/N)+val/N;
     return(ave);
-};
+}
 
-extern double var_online(double val,double ave,double var,double n,double x){
+double var_online(double val,double ave,double var,double n,double x){
     var=(((n-1)*x)/n+pow(val,2)/n-pow(((n-1)*ave)/n+val/n,2));
-return(var);
-};
+    return(var);
+}
 
