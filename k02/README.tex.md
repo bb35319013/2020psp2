@@ -43,4 +43,5 @@ Likelihood for B：0.000002
 ```
 
 ## 修正履歴
-
+- while文内のインデントを揃えましょう
+- 変数名は`max_val`, `min_val` より`L_a`, `L_b`とかの方が良いと思います. (L:Likelihood(尤度))

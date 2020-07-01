@@ -59,16 +59,6 @@ bb35319013　大﨑良祐
 
 1.43 推定分散 var　を出力
 
-## 入出力結果
-
-```
-input the filename of sample:../sample/heights_male.csv
-the filename of sample: ../sample/heights_male.csv
-sample mean：
-sample variance：
-population mean (estimated)：
-population variance (estimated)：
-```
 
 ## 入出力結果
 ```
@@ -94,3 +84,5 @@ suitei var: 28.984813
 `var_online`関数内にも適当なインデントを入れましょう. 
 
 
+[comment #20200701]
+- `var_online`関数の引数`double var`は計算に使用していないので, 引数に入れる必要はないと思います. 
