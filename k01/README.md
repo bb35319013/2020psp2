@@ -1,6 +1,6 @@
 # 課題1 レポート
 
-aa83988848 薗田光太郎
+bb35319013　大﨑良祐
 
 ## 課題
 
@@ -43,7 +43,7 @@ aa83988848 薗田光太郎
 
 ## ソースコードの説明
 
-1.30 val_onlineのn回目の値をvalに代入して更新
+1.30 val_onlineのn回目の値をvarに代入して更新
 
 1.31 ave_onlineのn回目の値をaveに代入して更新
 
@@ -72,7 +72,10 @@ population variance (estimated)：
 
 ## 入出力結果
 ```
-ここに出力結果を貼り付けてください
+hyouhonn ave: 173.888750
+hyouhonn var: 25.361711
+suitei ave: 173.888750
+suitei var: 28.984813
 ```
 
 

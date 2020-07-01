@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-double n;
 extern double ave_online(double val,double ave,int N);
-extern double var_online(double val,double ave,double var,double n,double x);
+extern double var_online(double val,double ave,double var,int N,double square_ave);
 
 int main(void)
 {   double ave=0,var=0,square_ave=0, suiteivar=0;
@@ -25,17 +24,18 @@ int main(void)
     }
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
-         N++;
-         n++;     
+
+         N++;     
+         
         var=var_online(val,ave,var,N,square_ave);
         ave=ave_online(val,ave,N);
-        square_ave=ave_online(pow(val,2),square_ave,n);
+        square_ave=ave_online(pow(val,2),square_ave,N);
     }
     if(N==1){
         suiteivar=0;
     }
     else{
-        suiteivar=n/(n-1)*var;
+        suiteivar=(double)N/(N-1)*var;
     }
     printf("hyouhonn ave: %lf\n", ave);
     printf("hyouhonn var: %lf\n", var);
@@ -52,8 +52,8 @@ double ave_online(double val,double ave, int N){
     return(ave);
 }
 
-double var_online(double val,double ave,double var,double n,double x){
-    var=(((n-1)*x)/n+pow(val,2)/n-pow(((n-1)*ave)/n+val/n,2));
+double var_online(double val,double ave,double var,int N,double square_ave){
+    var=(((N-1)*square_ave)/N+pow(val,2)/N-pow(((N-1)*ave)/N+val/N,2));
     return(var);
 }
 
