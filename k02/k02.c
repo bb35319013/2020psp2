@@ -7,7 +7,7 @@ extern double p_stdnorm(double z);
 
 int main(void)
 {
-    double val;
+    double val,max_val=1,min_val=1,xa,xb,Aave=170.8,Avar=pow(5.43,2),Bave=169.7,Bvar=pow(5.5,2);
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
@@ -28,10 +28,10 @@ int main(void)
         sscanf(buf,"%lf",&val);
 
 
-    
-
-
-
+    xa=(val-Aave)/sqrt(Avar);
+    xb=(val-Bave)/sqrt(Bvar);
+    max_val=max_val*p_stdnorm(xa);
+    min_val=min_val*p_stdnorm(xb);
     }
 
     if(fclose(fp) == EOF){
