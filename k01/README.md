@@ -86,3 +86,7 @@ suitei var: 28.984813
 
 [comment #20200701]
 - `var_online`関数の引数`double var`は計算に使用していないので, 引数に入れる必要はないと思います. 
+
+
+[comment #20200714]
+- OKです.
