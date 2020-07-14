@@ -19,9 +19,9 @@ int main(int argc, char* argv[])
     double sigma;
     int i;
     double dummy;
-
-
-
+    sscanf(argv[1],"%lf",&mu);
+    sscanf(argv[2],"%lf",&sigma);
+    sscanf(argv[3],"%d",&num_dummy);
 
 
     printf("============================================\n");
@@ -31,9 +31,14 @@ int main(int argc, char* argv[])
     printf("============================================\n");
 
     srand(RAND_SEED);
-    for(  ){
+    if(argc<4){
+        printf("引数が少なすぎます\n");
+        exit(EXIT_FAILURE);
+    }
+    for(i=0;i<num_dummy;i++)
+    {
         /* r_stdnormを使って，1人のデータを捏造 */
-        dummy =   ;
+        dummy =  mu + sigma*r_stdnorm();
         printf("%5.2lf\n",dummy);
     }
 

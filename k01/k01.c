@@ -3,7 +3,7 @@
 #include <string.h>
 #include <math.h>
 extern double ave_online(double val,double ave,int N);
-extern double var_online(double val,double ave,double var,int N,double square_ave);
+extern double var_online(double val,double ave,int N,double square_ave);
 
 int main(void)
 {   double ave=0,var=0,square_ave=0, suiteivar=0;
@@ -27,7 +27,7 @@ int main(void)
 
          N++;     
          
-        var=var_online(val,ave,var,N,square_ave);
+        var=var_online(val,ave,N,square_ave);
         ave=ave_online(val,ave,N);
         square_ave=ave_online(pow(val,2),square_ave,N);
     }
@@ -52,7 +52,8 @@ double ave_online(double val,double ave, int N){
     return(ave);
 }
 
-double var_online(double val,double ave,double var,int N,double square_ave){
+double var_online(double val,double ave,int N,double square_ave){
+    double var;
     var=(((N-1)*square_ave)/N+pow(val,2)/N-pow(((N-1)*ave)/N+val/N,2));
     return(var);
 }
