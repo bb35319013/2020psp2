@@ -7,11 +7,12 @@ extern double p_stdnorm(double z);
 
 int main(void)
 {
-    double val,L_a=1,L_b=1,xa,xb,Aave=170.8,Avar=pow(5.43,2),Bave=169.7,Bvar=pow(5.5,2);
+    double val,L_a=1,L_b=1,xa,xb;
+    const double Aave=170.8,Avar=pow(5.43,2),Bave=169.7,Bvar=pow(5.5,2);
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
-    double L1=1,L2=1;
+
 
     printf("input the filename of sample:");
     fgets(fname,sizeof(fname),stdin);

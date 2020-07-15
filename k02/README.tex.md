@@ -45,3 +45,9 @@ Likelihood for B：0.000002
 ## 修正履歴
 - while文内のインデントを揃えましょう
 - 変数名は`max_val`, `min_val` より`L_a`, `L_b`とかの方が良いと思います. (L:Likelihood(尤度))
+
+[comment #20200714]
+- l.11 Aaveなどは変数ではなく定数なので  
+`double ...` より `const double ...` にした方が良いです.  
+(または #define を使うか.)
+ 
