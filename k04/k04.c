@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 struct prof_data{
-           char ID;
+           int ID;
            char height;
            int gender;
     }; 
 int main(void)
 {   
     struct prof_data person_data[14];
-    int search_ID, i=0, l=0, n;
-    char height_buf[32], a;
+    int search_ID, i=0, l=0, a=0,n;
+    char height_buf[32],buf [32];
     char fname[FILENAME_MAX];
     FILE* fp_height;
     FILE*fp_ID;
@@ -20,14 +20,17 @@ int main(void)
     fgets(fname,sizeof(fname),stdin);
     fname[strlen(fname)-1] = '\0';
     printf("the filename of sample: %s\n",fname);
-    printf("ba-ka\n");
     fp_height = fopen(fname,"r");
     if(fp_height==NULL){
         fputs("File open error\n",stderr);
         exit(EXIT_FAILURE);
     }
     while(fgets(height_buf, sizeof(height_buf), fp_height)!=NULL){
-         sscanf(height_buf, "%d, %c", &person_data[14].gender, &person_data[14].height);
+         sscanf(height_buf, "%d, %s", &person_data[a].gender, &person_data[a].height);
+         printf("%d\n", a);
+            printf("%d\n", person_data[a].gender);
+            printf("%d\n", person_data[a].height);
+         a++;
     }
 
     printf("input the filename of sample ID:");
@@ -43,22 +46,23 @@ int main(void)
 
     printf("which ID's date do you want?");
     scanf("%d", &search_ID);
-
-    while(fgets(person_data[14].ID, sizeof(person_data[14].ID),fp_ID) != NULL){
-        sscanf(person_data[14].ID,"%c",&a);
-        if(search_ID==a){
+    while(fgets(buf, sizeof(buf),fp_ID) != NULL){
+        sscanf(buf,"%d",&person_data[l].ID);
+        if(search_ID==person_data[l].ID){
             i++;
             n=l;
         }
+
         l++;
     }
+    printf("%d\n", person_data[n].gender);
     if(i==0){
         printf("No data\n");
     }
     if(i==1){
     printf("ID:%d\n", person_data[n].ID);
     if(person_data[n].gender==1){
-        printf("gemder:male\n");
+        printf("gender:male\n");
     }
     if(person_data[n].gender==2){
         printf("gender:female\n");
