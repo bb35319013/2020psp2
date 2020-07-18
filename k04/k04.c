@@ -3,7 +3,7 @@
 #include <string.h>
 struct prof_data{
            int ID;
-           char height;
+           char* height[8];
            int gender;
     }; 
 int main(void)
@@ -25,11 +25,12 @@ int main(void)
         fputs("File open error\n",stderr);
         exit(EXIT_FAILURE);
     }
+    fgets(height_buf, sizeof(height_buf), fp_height);
     while(fgets(height_buf, sizeof(height_buf), fp_height)!=NULL){
-         sscanf(height_buf, "%d, %s", &person_data[a].gender, &person_data[a].height);
+         sscanf(height_buf, "%d, %s", &person_data[a].gender, person_data[a].height[8]);
          printf("%d\n", a);
             printf("%d\n", person_data[a].gender);
-            printf("%d\n", person_data[a].height);
+            printf("%s\n", person_data[a].height[8]);
          a++;
     }
 
@@ -67,7 +68,7 @@ int main(void)
     if(person_data[n].gender==2){
         printf("gender:female\n");
     }
-    printf("height:%d\n", person_data[n].height);
+    printf("height:%s\n", person_data[n].height[8]);
 }
 
 
