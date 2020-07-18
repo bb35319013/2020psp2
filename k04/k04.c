@@ -3,7 +3,7 @@
 #include <string.h>
 struct prof_data{
            int ID;
-           char* height[8];
+           char height[8];
            int gender;
     }; 
 int main(void)
@@ -27,10 +27,7 @@ int main(void)
     }
     fgets(height_buf, sizeof(height_buf), fp_height);
     while(fgets(height_buf, sizeof(height_buf), fp_height)!=NULL){
-         sscanf(height_buf, "%d, %s", &person_data[a].gender, person_data[a].height[8]);
-         printf("%d\n", a);
-            printf("%d\n", person_data[a].gender);
-            printf("%s\n", person_data[a].height[8]);
+         sscanf(height_buf, "%d, %s", &person_data[a].gender, person_data[a].height);
          a++;
     }
 
@@ -45,7 +42,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    printf("which ID's date do you want?");
+    printf("which ID's date do you want?:");
     scanf("%d", &search_ID);
     while(fgets(buf, sizeof(buf),fp_ID) != NULL){
         sscanf(buf,"%d",&person_data[l].ID);
@@ -56,19 +53,18 @@ int main(void)
 
         l++;
     }
-    printf("%d\n", person_data[n].gender);
     if(i==0){
         printf("No data\n");
     }
     if(i==1){
-    printf("ID:%d\n", person_data[n].ID);
+        printf("ID:%d\n", person_data[n].ID);
     if(person_data[n].gender==1){
         printf("gender:male\n");
     }
     if(person_data[n].gender==2){
         printf("gender:female\n");
     }
-    printf("height:%s\n", person_data[n].height[8]);
+    printf("height:%s\n", person_data[n].height);
 }
 
 
