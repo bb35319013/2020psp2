@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 struct prof_data{
-           int ID;
+           char ID;
            char height;
            int gender;
     }; 
 int main(void)
 {   
     struct prof_data person_data[14];
-    int search_ID, a, i=0, l=0, n;
-    char height_buf[32];
+    int search_ID, i=0, l=0, n;
+    char height_buf[32], a;
     char fname[FILENAME_MAX];
     FILE* fp_height;
     FILE*fp_ID;
@@ -42,10 +42,10 @@ int main(void)
     }
 
     printf("which ID's date do you want?");
-    sscanf("%d", &search_ID);
+    scanf("%d", &search_ID);
 
-    while(fgets(person_data[14].ID,sizeof(person_data[14].ID),fp_ID) != NULL){
-        sscanf(person_data[14].ID,"%d",&a);
+    while(fgets(person_data[14].ID, sizeof(person_data[14].ID),fp_ID) != NULL){
+        sscanf(person_data[14].ID,"%c",&a);
         if(search_ID==a){
             i++;
             n=l;
