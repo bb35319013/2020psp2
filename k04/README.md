@@ -41,24 +41,24 @@ l.40: もしfp_heightがNULLだったときは，ファイルを開けなかっ�
 
 1.47: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
 
-1.48:  bufからscanfで数値文字列を実数としてIDに読み込む
+1.48: bufからscanfで数値文字列を実数としてIDに読み込む
 
 1.49:もし調べたい学籍番号のデータがリストにあればiに1を足し、学籍番号の入っている配列の番号をnに格納
 
-1.56:i=0（学籍番号がデータにない）なら No daata　と出力
+1.56:i=0（学籍番号がデータにない）なら No data と出力
 
 1.59:i=1（学籍番号がデータにある）なら以下を実行
 
 1.60:学籍番号を出力
 
-1.61:もしgenderが1（男）なら male　と出力
+1.61:もしgenderが1（男）なら male と出力
 
-1.64:もしgenderが2（女）なら female　と出力
+1.64:もしgenderが2（女）なら female と出力
 
 1.67:身長を出力
 
 ## 入出力結果
-
+```
 input the filename of sample height:C:\Users\bb35319013\Desktop\2020psp2\sample\heights.csv
 the filename of sample: C:\Users\bb35319013\Desktop\2020psp2\sample\heights.csv
 input the filename of sample ID:C:\Users\bb35319013\Desktop\2020psp2\sample\IDs.csv
@@ -67,13 +67,18 @@ which ID's date do you want?:45313125
 ID:45313125
 gender:female
 height:152.40
-
+```
+```
 input the filename of sample height:C:\Users\bb35319013\Desktop\2020psp2\sample\heights.csv
 the filename of sample: C:\Users\bb35319013\Desktop\2020psp2\sample\heights.csv
 input the filename of sample ID:C:\Users\bb35319013\Desktop\2020psp2\sample\IDs.csv
 the filename of sample: C:\Users\bb35319013\Desktop\2020psp2\sample\IDs.csv
 which ID's date do you want?:45313124
 No data
+```
 
 ## 修正履歴
-
+[comment #20200719]
+- 実行結果自体はOKです. 
+- `i`はループのイテレータとしてよく使う名前なので, データが存在するかどうかを示すフラグとして使うなら, 例えば`exist_flag`とかが良いと思います. 
+- `a`, `l`, `n`の役割はほぼ同じだと思うので, どれか一つに統一できると思います. 
