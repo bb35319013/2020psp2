@@ -51,3 +51,6 @@ Likelihood for B：0.000002
 `double ...` より `const double ...` にした方が良いです.  
 (または #define を使うか.)
  
+ [comment #20200715]
+ - OKです. 
+ 
