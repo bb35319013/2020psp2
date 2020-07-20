@@ -5,15 +5,15 @@ struct prof_data{
            int ID;
            char height[8];
            int gender;
-    }; 
+}; 
 int main(void)
 {   
     struct prof_data person_data[14];
-    int search_ID, exit_flag=0, l=0;
+    int search_ID, exist_flag=0, l=0;
     char height_buf[32],buf [32];
     char fname[FILENAME_MAX];
-    FILE* fp_height;
-    FILE*fp_ID;
+    FILE *fp_height;
+    FILE *fp_ID;
 
 
     printf("input the filename of sample height:");
@@ -47,15 +47,15 @@ int main(void)
     while(fgets(buf, sizeof(buf),fp_ID) != NULL){
         sscanf(buf,"%d",&person_data[l].ID);
         if(search_ID==person_data[l].ID){
-            exit_flag++;
+            exist_flag++;
             break;
         }
         l++;
     }
-    if(exit_flag==0){
+    if(exist_flag==0){
         printf("No data\n");
     }
-    if(exit_flag==1){
+    if(exist_flag==1){
         printf("ID:%d\n", person_data[l].ID);
     if(person_data[l].gender==1){
         printf("gender:male\n");
