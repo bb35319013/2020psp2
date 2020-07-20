@@ -9,7 +9,7 @@ struct prof_data{
 int main(void)
 {   
     struct prof_data person_data[14];
-    int search_ID, i=0, l=0, a=0,n;
+    int search_ID, exit_flag=0, l=0;
     char height_buf[32],buf [32];
     char fname[FILENAME_MAX];
     FILE* fp_height;
@@ -27,10 +27,10 @@ int main(void)
     }
     fgets(height_buf, sizeof(height_buf), fp_height);
     while(fgets(height_buf, sizeof(height_buf), fp_height)!=NULL){
-         sscanf(height_buf, "%d, %s", &person_data[a].gender, person_data[a].height);
-         a++;
+         sscanf(height_buf, "%d, %s", &person_data[l].gender, person_data[l].height);
+         l++;
     }
-
+    l=0;
     printf("input the filename of sample ID:");
     fgets(fname,sizeof(fname),stdin);
     fname[strlen(fname)-1] = '\0';
@@ -47,24 +47,23 @@ int main(void)
     while(fgets(buf, sizeof(buf),fp_ID) != NULL){
         sscanf(buf,"%d",&person_data[l].ID);
         if(search_ID==person_data[l].ID){
-            i++;
-            n=l;
+            exit_flag++;
+            break;
         }
-
         l++;
     }
-    if(i==0){
+    if(exit_flag==0){
         printf("No data\n");
     }
-    if(i==1){
-        printf("ID:%d\n", person_data[n].ID);
-    if(person_data[n].gender==1){
+    if(exit_flag==1){
+        printf("ID:%d\n", person_data[l].ID);
+    if(person_data[l].gender==1){
         printf("gender:male\n");
     }
-    if(person_data[n].gender==2){
+    if(person_data[l].gender==2){
         printf("gender:female\n");
     }
-    printf("height:%s\n", person_data[n].height);
+    printf("height:%s\n", person_data[l].height);
 }
 
 
